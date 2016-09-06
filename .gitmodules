@@ -1,0 +1,6 @@
+[submodule "pork"]
+	path = pork
+	url = git://github.com/godfat/pork.git
+[submodule "task"]
+	path = task
+	url = git://github.com/godfat/gemgem
