@@ -3,8 +3,15 @@ require 'pork-rspec/expect'
 
 module RSpec
   module Context
-    def described_class
-      self.class.desc
+    def described_class klass=self.class
+      case desc = klass.desc
+      when NilClass, String
+        if parent = klass.instance_variable_get(:@super_executor)
+          described_class(parent)
+        end
+      else
+        desc
+      end
     end
     alias_method :subject, :described_class
 
@@ -30,6 +37,10 @@ module RSpec
 
     def be_empty
       :empty?.to_proc
+    end
+
+    def contain_exactly element
+      ->(obj){ obj == [element] }
     end
 
     def start_with str

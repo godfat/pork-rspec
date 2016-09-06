@@ -51,9 +51,10 @@ describe C, models: true do
 
   describe '#c' do
     before do
-      @b = [a]
+      @b = [subject.c]
     end
 
     it('message') { expect(@b).not_to be_empty }
+    it { expect(@b).to contain_exactly('C') }
   end
 end
