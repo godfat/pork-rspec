@@ -83,3 +83,10 @@ describe 'sum' do
     data.inject(0, &:+)
   end
 end
+
+describe 'let!' do
+  let(:data) { [] }
+  let!(:a) { data << 0 }
+  before { data << 1 }
+  it { expect(a).to contain_exactly(0, 1) }
+end

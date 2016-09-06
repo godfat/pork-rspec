@@ -16,6 +16,11 @@ module RSpec
     end
     alias_method :given, :let
 
+    def let! name, &block
+      let(name, &block)
+      before{ __send__(name) }
+    end
+
     def subject &block
       let(:subject, &block)
     end

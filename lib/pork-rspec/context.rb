@@ -39,8 +39,8 @@ module RSpec
       :empty?.to_proc
     end
 
-    def contain_exactly element
-      ->(obj){ obj == [element] }
+    def contain_exactly *elements
+      ->(obj){ obj == elements }
     end
 
     def start_with str
