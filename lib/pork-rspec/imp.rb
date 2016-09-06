@@ -11,7 +11,7 @@ module RSpec
       define_method(name) do
         ivar = "@#{name}"
         instance_variable_get(ivar) ||
-          instance_variable_set(ivar, block.call)
+          instance_variable_set(ivar, instance_eval(&block))
       end
     end
     alias_method :given, :let

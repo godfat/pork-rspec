@@ -24,7 +24,7 @@ module RSpec
     end
 
     def eq rhs
-      :==.to_proc
+      ->(obj){ obj == rhs }
     end
 
     def be_truthy
