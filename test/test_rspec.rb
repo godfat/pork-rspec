@@ -47,14 +47,13 @@ describe C, models: true do
   let(:a) { 'a' }
 
   it { is_expected.to be_truthy }
+  it { expect(subject).to be_truthy }
 
   describe '#c' do
-    context 'd' do
-      before do
-        @b = [a]
-      end
-
-      it('message') { expect(@b).not_to be_empty }
+    before do
+      @b = [a]
     end
+
+    it('message') { expect(@b).not_to be_empty }
   end
 end
