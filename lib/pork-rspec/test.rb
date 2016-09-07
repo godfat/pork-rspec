@@ -34,10 +34,10 @@ RSpec.configure do |config|
   config.raise_errors_for_deprecations!
 
   config.before(:suite) do
-    #
+    # TODO
   end
 
   config.around(:each, :caching) do |example|
-    #
+    # TODO
   end
 end

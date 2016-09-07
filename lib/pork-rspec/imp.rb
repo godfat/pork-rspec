@@ -4,7 +4,7 @@ require 'pork-rspec/alias'
 
 module RSpec
   module Imp
-    include Pork::Imp
+    include Pork::Suite::Imp
     include Alias
 
     def before *types
