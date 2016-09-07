@@ -14,7 +14,7 @@ Gemgem.init(dir) do |s|
   s.name    = 'pork-rspec'
   s.version = '0.0.1'
 
-  %w[pork].each{ |g| s.add_runtime_dependency(g) }
+  %w[pork muack].each{ |g| s.add_runtime_dependency(g) }
 
   # exclude pork
   s.files.reject!{ |f| f.start_with?('pork/') }
