@@ -17,7 +17,7 @@ module RSpec
 
       private
       def stub receive
-        Muack::API.stub(object).
+        Muack::API.stub(object). # not sure why rspec picked this behaviour
           method_missing(receive.message, &receive.blocks.last)
 
         receive.blocks[0..-2].each do |block|

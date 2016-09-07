@@ -3,7 +3,7 @@ require 'pork'
 require 'pork-rspec/alias'
 
 module RSpec
-  module Imp
+  module Suite
     include Pork::Suite::Imp
     include Alias
 

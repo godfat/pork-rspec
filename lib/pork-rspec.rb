@@ -1,11 +1,11 @@
 
 require 'pork/auto'
 require 'pork-rspec/config'
-require 'pork-rspec/imp'
+require 'pork-rspec/suite'
 require 'pork-rspec/context'
 require 'pork-rspec/mock'
 
-Pork::Suite.extend RSpec::Imp
+Pork::Suite.extend RSpec::Suite
 Pork::Suite.include RSpec::Context
 Pork::Suite.include RSpec::Mock
 
