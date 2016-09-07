@@ -18,20 +18,24 @@ module RSpec
       private
       def stub receive
         Muack::API.stub(object).
-          method_missing(receive.message, &receive.block)
+          method_missing(receive.message, &receive.blocks.last)
+
+        receive.blocks[0..-2].each do |block|
+          Muack::API.coat(object).method_missing(receive.message, &block)
+        end
       end
     end
 
-    class Receive < Struct.new(:message, :block)
-      def and_return value
-        self.block = lambda{ value }
+    class Receive < Struct.new(:message, :blocks)
+      def and_return *values
+        self.blocks = values.map{ |v| lambda{ v } }
         self
       end
     end
 
     def double name='unnamed', defs={}
       defs = name if name.kind_of?(Hash)
-      allow(Muack::API.stub.object).to receive_messages(defs)
+      allow(Object.new).to receive_messages(defs)
     end
 
     def allow obj
@@ -39,7 +43,7 @@ module RSpec
     end
 
     def receive msg, &block
-      Receive.new(msg, block)
+      Receive.new(msg, [block])
     end
 
     def receive_messages defs

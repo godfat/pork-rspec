@@ -41,4 +41,15 @@ describe 'mocks' do
       it{}
     end
   end
+
+  describe 'and_return with multiple values' do
+    let(:die) { double('die') }
+
+    it do
+      allow(die).to receive(:roll).and_return(1, 2, 3)
+      [1, 2, 3, 3, 3].each do |result|
+        expect(die.roll).to eq(result)
+      end
+    end
+  end
 end
