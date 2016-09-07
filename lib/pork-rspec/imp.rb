@@ -7,6 +7,16 @@ module RSpec
     include Pork::Imp
     include Alias
 
+    def before *types
+      super()
+      warn("Ignored before arguments: #{types}") if types.any?
+    end
+
+    def after *types
+      super()
+      warn("Ignored after arguments: #{types}") if types.any?
+    end
+
     def let name, &block
       define_method(name) do
         ivar = "@#{name}"
