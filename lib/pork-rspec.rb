@@ -1,15 +1,17 @@
 
 require 'pork'
-require 'pork-rspec/api'
 require 'pork-rspec/imp'
 require 'pork-rspec/context'
 require 'pork-rspec/config'
 
-include RSpec::API
 Pork::Executor.extend RSpec::Imp
 Pork::Executor.include RSpec::Context
 
 module RSpec
+  include Pork::API
+  include Alias
+  public *private_instance_methods
+
   def self.configure
     yield(config)
   end
@@ -18,3 +20,5 @@ module RSpec
     @config ||= Config.new
   end
 end
+
+include RSpec

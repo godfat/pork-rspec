@@ -12,8 +12,9 @@ module RSpec
         alias_method :shared_examples, :copy
         alias_method :shared_context, :copy
 
-        alias_method :it_behaves_like, :paste
+        alias_method :include_examples, :paste
         alias_method :include_context, :paste
+        alias_method :it_behaves_like, :paste
       end
     end
   end

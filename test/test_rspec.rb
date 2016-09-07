@@ -90,3 +90,17 @@ describe 'let!' do
   before { data << 1 }
   it { expect(a).to contain_exactly(0, 1) }
 end
+
+RSpec.shared_examples "collections" do |collection_class|
+  it "is empty when first created" do
+    expect(collection_class.new).to be_empty
+  end
+end
+
+RSpec.describe Array do
+  include_examples "collections", Array
+end
+
+RSpec.describe Hash do
+  include_examples "collections", Hash
+end
