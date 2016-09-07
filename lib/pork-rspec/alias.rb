@@ -10,7 +10,8 @@ module RSpec
         %i[it example specify],
         %i[describe context example_group],
         %i[copy shared_examples shared_context],
-        %i[paste include_examples include_context it_behaves_like])
+        %i[paste include_examples include_context
+                 it_behaves_like it_should_behave_like])
     end
 
     def self.add mod, *names
