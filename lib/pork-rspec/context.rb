@@ -26,6 +26,7 @@ module RSpec
     def eq rhs
       ->(obj){ obj == rhs }
     end
+    alias_method :equal, :eq
 
     def be_truthy
       ->(obj){ !!obj == true }
@@ -37,6 +38,10 @@ module RSpec
 
     def be_empty
       :empty?.to_proc
+    end
+
+    def be_nil
+      eq(nil)
     end
 
     def contain_exactly *elements

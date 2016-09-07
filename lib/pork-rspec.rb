@@ -1,5 +1,5 @@
 
-require 'pork'
+require 'pork/auto'
 require 'pork-rspec/imp'
 require 'pork-rspec/context'
 require 'pork-rspec/config'
