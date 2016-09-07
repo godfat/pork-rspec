@@ -2,43 +2,57 @@
 require 'pork-rspec/test'
 
 describe 'mocks' do
-  describe 'allow' do
-    title = "The RSpec Book"
+  after do
+    Muack.verify # make this implicit
+  end
 
-    let(:book) { double("book") }
+  %w[allow expect].each do |kind|
+    describe kind do
+      title = "The RSpec Book"
 
-    after do
-      expect(book.title).to eq(title)
-      expect(book.reverse).to eq(title.reverse)
-    end
+      let(:book) { double("book") }
 
-    it 'receives with a block' do
-      allow(book).to receive(:title) { title }
-      allow(book).to receive(:reverse) { title.reverse }
-    end
+      after do
+        expect(book.title).to eq(title)
+        expect(book.reverse).to eq(title.reverse)
 
-    it 'receives with and_return' do
-      allow(book).to receive(:title).and_return(title)
-      allow(book).to receive(:reverse).and_return(title.reverse)
-    end
+        if kind == 'expect'
+          should.raise(Muack::Expected) do
+            book.title
+          end
+        else
+          expect(book.title).to eq(title)
+        end
+      end
 
-    it 'receive_messages' do
-      allow(book).to receive_messages(:title => title,
-                                      :reverse => title.reverse)
+      it 'receives with a block' do
+        send(kind, book).to receive(:title) { title }
+        send(kind, book).to receive(:reverse) { title.reverse }
+      end
 
-    end
+      it 'receives with and_return' do
+        send(kind, book).to receive(:title).and_return(title)
+        send(kind, book).to receive(:reverse).and_return(title.reverse)
+      end
 
-    context 'just use double' do
-      let(:book) { double("book", :title => title,
-                                  :reverse => title.reverse) }
+      it 'receive_messages' do
+        send(kind, book).to receive_messages(:title => title,
+                                             :reverse => title.reverse)
 
-      it{}
-    end
+      end
 
-    context 'unnamed defs' do
-      let(:book) { double(:title => title, :reverse => title.reverse) }
+      context 'just use double' do
+        let(:book) { double("book", :title => title,
+                                    :reverse => title.reverse) }
 
-      it{}
+        it{}
+      end if kind == 'allow'
+
+      context 'unnamed defs' do
+        let(:book) { double(:title => title, :reverse => title.reverse) }
+
+        it{}
+      end if kind == 'allow'
     end
   end
 
