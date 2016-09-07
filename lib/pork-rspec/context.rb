@@ -24,16 +24,16 @@ module RSpec
     end
 
     def eq rhs
-      ->(obj){ obj == rhs }
+      ->(expect){ expect == rhs }
     end
     alias_method :equal, :eq
 
     def be_truthy
-      ->(obj){ !!obj == true }
+      ->(expect){ expect != nil && expect != false }
     end
 
     def be_falsey
-      ->(obj){ !!obj == false }
+      ->(expect){ !expect }
     end
 
     def be_empty
@@ -45,11 +45,11 @@ module RSpec
     end
 
     def contain_exactly *elements
-      ->(obj){ obj == elements }
+      eq(elements)
     end
 
     def start_with str
-      ->(obj){ obj.start_with?(str) }
+      ->(expect){ expect.start_with?(str) }
     end
   end
 end
