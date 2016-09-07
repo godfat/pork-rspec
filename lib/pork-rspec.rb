@@ -11,8 +11,8 @@ Pork::Suite.include RSpec::Mock
 
 module RSpec
   include Pork::API
-  include Alias
   public *private_instance_methods
+  include Alias
 
   def self.configure
     yield(config)
