@@ -34,5 +34,11 @@ describe 'mocks' do
 
       it{}
     end
+
+    context 'unnamed defs' do
+      let(:book) { double(:title => title, :reverse => title.reverse) }
+
+      it{}
+    end
   end
 end

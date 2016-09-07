@@ -30,6 +30,7 @@ module RSpec
     end
 
     def double name='unnamed', defs={}
+      defs = name if name.kind_of?(Hash)
       allow(Muack::API.stub.object).to receive_messages(defs)
     end
 
