@@ -1,20 +1,21 @@
 # -*- encoding: utf-8 -*-
-# stub: pork-rspec 0.0.1 ruby lib
+# stub: pork-rspec 0.5.0 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "pork-rspec".freeze
-  s.version = "0.0.1"
+  s.version = "0.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
   s.authors = ["Lin Jen-Shin (godfat)".freeze]
-  s.date = "2016-09-08"
+  s.date = "2016-09-14"
   s.description = "RSpec compatibility layer for Pork.".freeze
   s.email = ["godfat (XD) godfat.org".freeze]
   s.files = [
   ".gitignore".freeze,
   ".gitmodules".freeze,
   ".travis.yml".freeze,
+  "CHANGES.md".freeze,
   "Gemfile".freeze,
   "README.md".freeze,
   "Rakefile".freeze,
@@ -23,12 +24,13 @@ Gem::Specification.new do |s|
   "lib/pork-rspec/config.rb".freeze,
   "lib/pork-rspec/context.rb".freeze,
   "lib/pork-rspec/expect.rb".freeze,
-  "lib/pork-rspec/imp.rb".freeze,
   "lib/pork-rspec/mock.rb".freeze,
+  "lib/pork-rspec/suite.rb".freeze,
   "lib/pork-rspec/test.rb".freeze,
   "pork-rspec.gemspec".freeze,
   "task/README.md".freeze,
   "task/gemgem.rb".freeze,
+  "test/test_context.rb".freeze,
   "test/test_from_doc.rb".freeze,
   "test/test_misc.rb".freeze,
   "test/test_mock.rb".freeze]
@@ -37,6 +39,7 @@ Gem::Specification.new do |s|
   s.rubygems_version = "2.6.6".freeze
   s.summary = "RSpec compatibility layer for Pork.".freeze
   s.test_files = [
+  "test/test_context.rb".freeze,
   "test/test_from_doc.rb".freeze,
   "test/test_misc.rb".freeze,
   "test/test_mock.rb".freeze]

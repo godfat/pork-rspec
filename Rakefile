@@ -12,7 +12,7 @@ end
 
 Gemgem.init(dir) do |s|
   s.name    = 'pork-rspec'
-  s.version = '0.0.1'
+  s.version = '0.5.0'
 
   %w[pork muack].each{ |g| s.add_runtime_dependency(g) }
 
