@@ -1,20 +1,20 @@
 
 require 'pork-rspec/test'
 
-describe C, models: true do
+describe M, models: true do
   let(:a) { 'a' }
 
   it { is_expected.to be_truthy }
   it { expect(subject).to be_truthy }
   it { expect(a).to eq('a') }
 
-  describe '#c' do
+  describe '#m' do
     before do
-      @b = [subject.c]
+      @b = [subject.f]
     end
 
     it('message') { expect(@b).not_to be_empty }
-    it { expect(@b).to contain_exactly('C') }
+    it { expect(@b).to contain_exactly('f') }
   end
 end
 

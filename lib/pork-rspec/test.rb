@@ -15,6 +15,11 @@ module M
       'n'
     end
   end
+
+  module_function
+  def f
+    'f'
+  end
 end
 
 class C
