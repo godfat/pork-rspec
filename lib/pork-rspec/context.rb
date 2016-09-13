@@ -3,14 +3,16 @@ require 'pork-rspec/expect'
 
 module RSpec
   module Context
-    def described_class klass=self.class
-      case desc = klass.desc
-      when NilClass, String
-        if parent = klass.instance_variable_get(:@super_executor)
-          described_class(parent)
-        end
+    def described_class klass=self.class, desc=klass.desc
+      case current = klass.desc
+      when Module
+        current
       else
-        desc
+        if parent = klass.instance_variable_get(:@super_executor)
+          described_class(parent, desc)
+        else
+          desc
+        end
       end
     end
 
