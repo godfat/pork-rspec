@@ -13,9 +13,9 @@ describe 'mocks' do
         expect(book.reverse).to eq(title.reverse)
 
         if kind == 'expect'
-          expect do
-            book.title
-          end.to raise_error(Muack::Expected)
+          if Object.const_defined?(:Muack)
+            expect{ book.title }.to raise_error(Muack::Expected)
+          end
         else
           expect(book.title).to eq(title)
         end
