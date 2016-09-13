@@ -27,8 +27,8 @@ module RSpec
       expect(subject)
     end
 
-    def expect obj
-      Expect.new(pork_stat, obj)
+    def expect obj=self, &block
+      Expect.new(pork_stat, block || obj)
     end
 
     def eq rhs
@@ -68,6 +68,10 @@ module RSpec
 
     def be_nil
       eq(nil)
+    end
+
+    def raise_error error
+      ->(expect){ expect.raise(error) }
     end
 
     def contain_exactly *elements
