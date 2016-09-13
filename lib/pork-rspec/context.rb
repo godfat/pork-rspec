@@ -13,7 +13,15 @@ module RSpec
         desc
       end
     end
-    alias_method :subject, :described_class
+
+    def subject
+      @subject ||= case klass = described_class
+                   when Class
+                     klass.new
+                   else
+                     klass
+                   end
+    end
 
     def is_expected
       expect(subject)
@@ -26,7 +34,25 @@ module RSpec
     def eq rhs
       ->(expect){ expect == rhs }
     end
-    alias_method :equal, :eq
+
+    def eql rhs
+      ->(expect){ expect.eql?(rhs) }
+    end
+
+    def equal rhs
+      ->(expect){ expect.equal?(rhs) }
+    end
+    alias_method :be, :equal
+
+    def be_an_instance_of rhs
+      ->(expect){ expect.class == rhs }
+    end
+
+    def be_a rhs
+      ->(expect){ expect.kind_of?(rhs) }
+    end
+    alias_method :be_an, :be_a
+    alias_method :be_a_kind_of, :be_a
 
     def be_truthy
       ->(expect){ expect != nil && expect != false }
