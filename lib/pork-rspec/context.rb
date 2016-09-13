@@ -83,6 +83,10 @@ module RSpec
       eq(elements)
     end
 
+    def match_array array
+      eq(array)
+    end
+
     def match rhs
       ->(actual){ actual =~ rhs }
     end

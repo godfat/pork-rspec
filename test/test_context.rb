@@ -43,3 +43,19 @@ describe 'raise_error' do
     end.to raise_error(RuntimeError, 'test')
   end
 end
+
+describe 'contain_exactly and match_array' do
+  it do
+    expect([1]).to contain_exactly(1)
+  end
+
+  it do
+    expect([1]).to match_array([1])
+  end
+end
+
+describe 'match' do
+  it do
+    expect('nnf').to match(/\A\w{3}\z/)
+  end
+end
