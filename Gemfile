@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'rake'
+gem 'rspec'
 
 gem 'simplecov', :require => false if ENV['COV']
 gem 'coveralls', :require => false if ENV['CI']
