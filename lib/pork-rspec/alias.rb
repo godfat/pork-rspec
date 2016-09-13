@@ -5,13 +5,19 @@ module RSpec
       would(desc, opts, &block)
     end
 
+    def it_behaves_like desc='', *args, &block
+      copy(desc) do
+        describe(desc, *args, &block)
+      end
+    end
+
     def self.included mod
       Alias.add(mod,
         %i[it example specify],
         %i[describe context example_group],
         %i[copy shared_examples shared_context],
         %i[paste include_examples include_context
-                 it_behaves_like it_should_behave_like])
+           it_behaves_like it_should_behave_like])
     end
 
     def self.add mod, *names
