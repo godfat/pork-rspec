@@ -8,6 +8,9 @@ require 'pork-rspec/mock'
 Pork::Suite.extend RSpec::Suite
 Pork::Suite.include RSpec::Context
 Pork::Suite.include RSpec::Mock
+Pork::Suite.after do
+  Muack.verify
+end
 
 module RSpec
   include Pork::API

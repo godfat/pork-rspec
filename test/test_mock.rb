@@ -2,10 +2,6 @@
 require 'pork-rspec/test'
 
 describe 'mocks' do
-  after do
-    Muack.verify # make this implicit
-  end
-
   %w[allow expect].each do |kind|
     describe kind do
       title = "The RSpec Book"
