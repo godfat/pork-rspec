@@ -34,34 +34,34 @@ module RSpec
     end
 
     def eq rhs
-      ->(expect){ expect == rhs }
+      ->(actual){ actual == rhs }
     end
 
     def eql rhs
-      ->(expect){ expect.eql?(rhs) }
+      ->(actual){ actual.eql?(rhs) }
     end
 
     def equal rhs
-      ->(expect){ expect.equal?(rhs) }
+      ->(actual){ actual.equal?(rhs) }
     end
     alias_method :be, :equal
 
     def be_an_instance_of rhs
-      ->(expect){ expect.class == rhs }
+      ->(actual){ actual.class == rhs }
     end
 
     def be_a rhs
-      ->(expect){ expect.kind_of?(rhs) }
+      ->(actual){ actual.kind_of?(rhs) }
     end
     alias_method :be_an, :be_a
     alias_method :be_a_kind_of, :be_a
 
     def be_truthy
-      ->(expect){ expect != nil && expect != false }
+      ->(actual){ actual != nil && actual != false }
     end
 
     def be_falsey
-      ->(expect){ !expect }
+      :!.to_proc
     end
 
     def be_empty
@@ -72,16 +72,23 @@ module RSpec
       eq(nil)
     end
 
-    def raise_error error
-      ->(expect){ expect.raise(error) }
+    def raise_error error, msg=nil
+      ->(actual) do
+        exc = actual.raise(error)
+        expect(exc.message).to eq(msg) if msg
+      end
     end
 
     def contain_exactly *elements
       eq(elements)
     end
 
+    def match rhs
+      ->(actual){ actual =~ rhs }
+    end
+
     def start_with str
-      ->(expect){ expect.start_with?(str) }
+      ->(actual){ actual.start_with?(str) }
     end
   end
 end

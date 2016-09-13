@@ -29,3 +29,17 @@ describe 'parent' do
     it { expect(subject).to eq('string') }
   end
 end
+
+describe 'raise_error' do
+  it do
+    expect do
+      raise 'test'
+    end.to raise_error(RuntimeError)
+  end
+
+  it do
+    expect do
+      raise 'test'
+    end.to raise_error(RuntimeError, 'test')
+  end
+end
