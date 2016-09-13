@@ -34,7 +34,6 @@ describe 'mocks' do
       it 'receive_messages' do
         send(kind, book).to receive_messages(:title => title,
                                              :reverse => title.reverse)
-
       end
 
       context 'just use double' do
