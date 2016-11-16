@@ -10,5 +10,5 @@ Gemgem.init(__dir__, :submodules => %w[pork]) do |s|
   s.name    = 'pork-rspec'
   s.version = '0.5.0'
 
-  %w[pork muack].each{ |g| s.add_runtime_dependency(g) }
+  %w[pork muack].each(&s.method(:add_runtime_dependency))
 end
