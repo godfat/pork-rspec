@@ -8,18 +8,19 @@ before_install:
 install: 'gem install bundler; bundle install --retry=3'
 script: 'ruby -vr bundler/setup -S rake test'
 
-matrix:
-  include:
-    - rvm: 2.2.5
-    - rvm: 2.3.1
-    - rvm: jruby-9
-      env: JRUBY_OPTS=--debug
-    - rvm: rbx
+rvm:
+  - 2.2.5
+  - 2.3.1
+  - jruby-9
+  - rbx
 
+matrix:
   allow_failures:
   - rvm: rbx
 
 env:
+  global:
+    - JRUBY_OPTS=--debug
   matrix:
     - PORK=1
     - RSPEC=1
