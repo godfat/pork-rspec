@@ -20,5 +20,6 @@ matrix:
   - rvm: rbx
 
 env:
-  - PORK=1
-  - RSPEC=1
+  matrix:
+    - PORK=1
+    - RSPEC=1
