@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
   s.authors = ["Lin Jen-Shin (godfat)".freeze]
-  s.date = "2016-09-14"
+  s.date = "2016-11-17"
   s.description = "RSpec compatibility layer for Pork.".freeze
   s.email = ["godfat (XD) godfat.org".freeze]
   s.files = [
@@ -36,7 +36,7 @@ Gem::Specification.new do |s|
   "test/test_mock.rb".freeze]
   s.homepage = "https://github.com/godfat/pork-rspec".freeze
   s.licenses = ["Apache License 2.0".freeze]
-  s.rubygems_version = "2.6.6".freeze
+  s.rubygems_version = "2.6.8".freeze
   s.summary = "RSpec compatibility layer for Pork.".freeze
   s.test_files = [
   "test/test_context.rb".freeze,
