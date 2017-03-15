@@ -11,6 +11,7 @@ script: 'ruby -vr bundler/setup -S rake test'
 rvm:
   - 2.2.5
   - 2.3.2
+  - 2.4.0
   - jruby-9
   - rbx
 
